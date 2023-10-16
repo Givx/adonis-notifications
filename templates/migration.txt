@@ -5,9 +5,16 @@ export default class {{ notificationsSchemaName }} extends BaseSchema {
 
   public async up() {
     this.schema.createTable(this.tableName, (table) => {
-      table.increments('id').primary()
+      {{#useUuid}}
+        table.uuid('id').primary()
+        table.uuid('notifiable_id').references('id').inTable('{{ notifiableTableName }}').onDelete('CASCADE')
+      {{/useUuid}}
+      {{^useUuid}}
+        table.increments('id').primary()
+        table.integer('notifiable_id').unsigned().references('id').inTable('{{ notifiableTableName }}').onDelete('CASCADE')
+      {{/useUuid}}
+
       table.json('data').notNullable()
-      table.integer('notifiable_id').unsigned().references('id').inTable('{{ notifiableTableName }}').onDelete('CASCADE')
       table.timestamp('read_at', { useTz: true })
       table.timestamp('created_at', { useTz: true }).notNullable()
       table.timestamp('updated_at', { useTz: true }).notNullable()

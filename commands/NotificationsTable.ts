@@ -35,6 +35,8 @@ export default class NotificationsTable extends BaseCommand {
       }
     )
 
+    const uuid = await this.prompt.confirm('Use uuid ?', { default: true })
+
     this.generator
       .addFile(`${Date.now()}_${name}`)
       .appRoot(this.application.appRoot)
@@ -45,6 +47,7 @@ export default class NotificationsTable extends BaseCommand {
         notificationsSchemaName: 'Notifications',
         notificationsTableName: name,
         notifiableTableName: notifiable,
+        useUuid: uuid,
       })
 
     await this.generator.run()
