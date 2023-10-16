@@ -1,10 +1,10 @@
 {
-  "name": "@verful/notifications",
+  "name": "@givx/notifications",
   "description": "The easiest way to send notifications in AdonisJS",
   "version": "2.0.2",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/verful/notifications.git"
+    "url": "git+https://github.com/Givx/adonis-notifications.git"
   },
   "main": "build/providers/NotificationProvider.js",
   "types": "build/adonis-typings/index.d.ts",
@@ -84,7 +84,7 @@
     "commit": "git-cz",
     "release": "np --message=\"chore(release): %s\"",
     "version": "yarn build",
-    "sync-labels": "github-label-sync --labels ./node_modules/@adonisjs/mrm-preset/gh-labels.json verful/notifications"
+    "sync-labels": "github-label-sync --labels ./node_modules/@adonisjs/mrm-preset/gh-labels.json givx/notifications"
   },
   "engines": {
     "node": ">=10"
@@ -129,17 +129,26 @@
     "anyBranch": false
   },
   "adonisjs": {
-    "types": "@verful/notifications",
+    "types": "@givx/notifications",
     "instructions": "./build/instructions.js",
     "instructionsMd": "./build/instructions.md",
     "providers": [
-      "@verful/notifications"
+      "@givx/notifications"
     ],
     "commands": [
-      "@verful/notifications/build/commands"
+      "@givx/notifications/build/commands"
     ]
   },
   "publishConfig": {
-    "registry": "https://registry.npmjs.org"
-  }
+    "registry": "https://registry.npmjs.org",
+    "access": "public"
+  },
+  "bugs": {
+    "url": "https://github.com/Givx/adonis-notifications/issues"
+  },
+  "homepage": "https://github.com/Givx/adonis-notifications#readme",
+  "directories": {
+    "test": "tests"
+  },
+  "author": "givxgivx@gmail.com"
 }

@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="https://github.com/verful/notifications/raw/master/.github/banner.png" width="1200px">
+  <img src="https://github.com/givx/notifications/raw/master/.github/banner.png" width="1200px">
 </div>
 
 
@@ -16,7 +16,7 @@
 
 
 ## **Pre-requisites**
-The `@verful/notifications` package requires `@adonisjs/core >= 5.4.2`
+The `@givx/notifications` package requires `@adonisjs/core >= 5.4.2`
 
 Also, it relies on `@adonisjs/lucid >= 16.3.2` for database notifications and on `@adonisjs/mail >= 7.2.4` for mail notifications.
 
@@ -25,15 +25,15 @@ Also, it relies on `@adonisjs/lucid >= 16.3.2` for database notifications and on
 Install the package from the npm registry as follows.
 
 ```
-npm i @verful/notifications
+npm i @givx/notifications
 # or
-yarn add @verful/notifications
+yarn add @givx/notifications
 ```
 
 Next, configure the package by running the following ace command.
 
 ```
-node ace configure @verful/notifications
+node ace configure @givx/notifications
 ```
 
 ## **Generating Notifications**
@@ -54,7 +54,7 @@ First, apply the mixin on the model you are wanting to notify.
 ```typescript
 import { BaseModel } from '@ioc:Adonis/Lucid/Orm'
 import { compose } from '@ioc:Adonis/Core/Helpers'
-import { Notifiable } from '@ioc:Verful/Notification/Mixins'
+import { Notifiable } from '@ioc:givx/Notification/Mixins'
 
 // Notifiable takes the notification table name as it's only param 
 export default class User extends compose(BaseModel, Notifiable('notifications')){
@@ -76,7 +76,7 @@ user.notifyLater(new TestNotification())
 You can also use the `Notification` module to send notifications. Sending notifications this way is useful when you need to send a notification to multiple notifiables, like a array of users.
 
 ```typescript
-import Notification from '@ioc:Verful/Notification'
+import Notification from '@ioc:givx/Notification'
 
 Notification.send(users, new TestNotification())
 ```
@@ -84,7 +84,7 @@ Notification.send(users, new TestNotification())
 You can also delay notifications using the `sendLater` method. This method uses a in-memory queue to send the notifications.
 
 ```typescript
-import Notification from '@ioc:Verful/Notification'
+import Notification from '@ioc:givx/Notification'
 
 Notification.sendLater(users, new TestNotification())
 ```
@@ -215,7 +215,7 @@ await user.markNotificationsAsRead()
 You may want to deliver notifications using other channels, for that, you can use any class that implements the `NotificationChannelContract`
 
 ```typescript
-import { NotificationChannelContract } from '@ioc:Verful/Notification'
+import { NotificationChannelContract } from '@ioc:givx/Notification'
 
 interface VoiceMessageContract {
   text: string
@@ -234,7 +234,7 @@ After the channel is created, you must extend the `Notification` module, you can
 
 ```typescript
 // start/notification.ts
-import Notification from '@ioc:Verful/Notification'
+import Notification from '@ioc:givx/Notification'
 import VoiceChannel from 'App/Channels/VoiceChannel'
 
 Notification.extend('voice', () => new VoiceChannel())
@@ -264,10 +264,10 @@ interface NotificationChannelsList {
 ```
 
 
-[npm-image]: https://img.shields.io/npm/v/@verful/notifications.svg?style=for-the-badge&logo=npm
-[npm-url]: https://npmjs.org/package/@verful/notifications "npm"
+[npm-image]: https://img.shields.io/npm/v/@givx/notifications.svg?style=for-the-badge&logo=npm
+[npm-url]: https://npmjs.org/package/@givx/notifications "npm"
 
-[license-image]: https://img.shields.io/npm/l/@verful/notifications?color=blueviolet&style=for-the-badge
+[license-image]: https://img.shields.io/npm/l/@givx/notifications?color=blueviolet&style=for-the-badge
 [license-url]: LICENSE.md "license"
 
 [typescript-image]: https://img.shields.io/badge/Typescript-294E80.svg?style=for-the-badge&logo=typescript
